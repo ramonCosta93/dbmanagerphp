@@ -8,21 +8,23 @@
 
 class ConnectionBase implements IConnect{
 
-    private $db;
+    private $_db;
+    private $_prepared;
+    private $_params;
 
     public function __construct(ICredentials $credentials)
     {
-        $this->db = $this->connection($credentials);
+        $this->_db = $this->connection($credentials);
     }
 
     public function prepare($statement)
     {
-        // TODO: Implement prepare() method.
+        $this->_prepared = parent::prepare($statement,array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     }
 
     public function connection(ICredentials $credentials)
     {
-        $this->db = new PDO(
+        $this->_db = new PDO(
                             "mysql:host=".$credentials->getHost().
                             ";port=".$credentials->getHostPort().
                             ";dbname=".$credentials->getCatalog()
@@ -32,19 +34,20 @@ class ConnectionBase implements IConnect{
 
     }
 
-    public function query()
+    public function query($statement)
     {
-        // TODO: Implement query() method.
+        return $this->query($statement);
     }
 
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->_prepared->execute($this->_params);
+        return $this->_prepared;
     }
 
-    public function addParameter()
+    public function addParameter(array $params)
     {
-        // TODO: Implement addParameter() method.
+        $this->_params = $params;
     }
 
     public function getError()

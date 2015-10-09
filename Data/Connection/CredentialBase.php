@@ -8,7 +8,38 @@
 
 class CredentialBase implements ICredentials
 {
-    public function getUserName()
+    
+    public function setUserName()
+    {
+        return "root";
+    }
+
+    public function setPassword()
+    {
+        return "";
+    }
+
+    public function setHost()
+    {
+        return "127.0.0.1";
+    }
+
+    public function setHostPort()
+    {
+        return "3306";
+    }
+
+    public function setCatalog()
+    {
+        return "adventureworks";
+    }
+
+    public function setProvider()
+    {
+        return "mysql";
+    }
+
+    public function etUserName()
     {
         return "root";
     }

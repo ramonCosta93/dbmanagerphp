@@ -10,8 +10,8 @@ interface IConnect
 {
     public function prepare($statement);
     public function connection(ICredentials $credentials);
-    public function query();
+    public function query($statement);
     public function execute();
-    public function addParameter();
+    public function addParameter(array $params);
     public function getError();
 }
