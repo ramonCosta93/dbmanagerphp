@@ -10,11 +10,16 @@ $credentials->setProvider("mysql");
 $credentials->setUserName("root");
 $credentials->setPassword("");
 
-
 $con = new ConnectionBase($credentials);
 
+$context = new ContextBase($con);
+
+var_dump($context);
+
+/*
 $con->prepare("INSERT INTO teste VALUES(:id, :nome)");
-$con->addParameter(array(":id" => 32 , ":nome" => "Ronaldo Santos"));             ;
+$con->addParameter(array(":id" => 32 , ":nome" => "Ronaldo Santos"));
 $con->execute();
 
 var_dump($con->query("SELECT * FROM teste")->fetchAll(PDO::FETCH_ASSOC));
+  */
