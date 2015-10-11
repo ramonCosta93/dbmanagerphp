@@ -8,64 +8,71 @@
 
 class CredentialBase implements ICredentials
 {
+    private $username;
+    private $password;
+    private $hostname;
+    private $hostport;
+    private $catalog;
+    private $provider;
+
     
-    public function setUserName()
+    public function setUserName($i)
     {
-        return "root";
+        $this->username = $i;
     }
 
-    public function setPassword()
+    public function setPassword($i)
     {
-        return "";
+        $this->password = $i;
     }
 
-    public function setHost()
+    public function setHost($i)
     {
-        return "127.0.0.1";
+        $this->hostname = $i;
     }
 
-    public function setHostPort()
+    public function setHostPort($i)
     {
-        return "3306";
+        $this->hostport = $i;
     }
 
-    public function setCatalog()
+    public function setCatalog($i)
     {
-        return "adventureworks";
+        $this->catalog = $i;
     }
 
-    public function setProvider()
+    public function setProvider($i)
     {
-        return "mysql";
+        $this->provider = $i;
     }
 
-    public function etUserName()
+    public function getUserName()
     {
-        return "root";
+        return $this->username;
     }
 
     public function getPassword()
     {
-        return "";
+        return $this->password;
     }
 
     public function getHost()
     {
-        return "127.0.0.1";
+        return $this->hostname;
     }
 
     public function getHostPort()
     {
-        return "3306";
+        return $this->hostport;
     }
 
     public function getCatalog()
     {
-        return "adventureworks";
+        return $this->catalog;
     }
 
     public function getProvider()
     {
-        return "mysql";
+        return $this->provider;
     }
 }

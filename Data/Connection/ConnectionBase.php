@@ -14,12 +14,12 @@ class ConnectionBase implements IConnect{
 
     public function __construct(ICredentials $credentials)
     {
-        $this->_db = $this->connection($credentials);
+       $this->connection($credentials);
     }
 
     public function prepare($statement)
     {
-        $this->_prepared = parent::prepare($statement,array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $this->_prepared = $this->_db->prepare($statement,array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     }
 
     public function connection(ICredentials $credentials)
@@ -31,12 +31,11 @@ class ConnectionBase implements IConnect{
                             ,$credentials->getUserName()
                             ,$credentials->getPassword()
                            );
-
     }
 
     public function query($statement)
     {
-        return $this->query($statement);
+        return $this->_db->query($statement);
     }
 
     public function execute()
