@@ -11,10 +11,15 @@ $credentials->setUserName("root");
 $credentials->setPassword("");
 
 $con = new ConnectionBase($credentials);
-
 $context = new ContextBase($con);
+$testeEntity = $context->getEntity("teste");
+$testeEntity->id = 23123;
 
-var_dump($context);
+$dao = new ContextDAOBase($con,$testeEntity);
+
+$dao->Add();
+
+var_dump($context->getEntity("teste")->getPropertysColumns());
 
 /*
 $con->prepare("INSERT INTO teste VALUES(:id, :nome)");

@@ -6,6 +6,8 @@
  * Time: 19:45
  */
 
-interface IContextEntity {
-
+interface IContextEntity
+{
+    public function getEntityName();
+    public function getPropertysColumns();
 }

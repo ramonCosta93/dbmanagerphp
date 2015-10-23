@@ -14,4 +14,5 @@ interface IConnect
     public function execute();
     public function addParameter(array $params);
     public function getError();
+    public function getCatalog();
 }

@@ -25,4 +25,12 @@ class ContextBase
            $this->$table["TABLE_NAME"] = $table["TABLE_NAME"];
        }
     }
+
+    public function getEntity($entity)
+    {
+        if($this->$entity == null)
+            throw new Exception("Entidade não setado no contexto");
+
+        return new ContextEntityBase($this->_dbAcces,$entity);
+    }
 }

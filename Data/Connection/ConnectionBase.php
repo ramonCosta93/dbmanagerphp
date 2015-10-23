@@ -11,9 +11,12 @@ class ConnectionBase implements IConnect{
     private $_db;
     private $_prepared;
     private $_params;
+    private $_database;
 
     public function __construct(ICredentials $credentials)
     {
+       $this->_database = $credentials->getCatalog();
+
        $this->connection($credentials);
     }
 
@@ -52,5 +55,10 @@ class ConnectionBase implements IConnect{
     public function getError()
     {
         // TODO: Implement getError() method.
+    }
+
+    public function getCatalog()
+    {
+        return $this->_database;
     }
 }
