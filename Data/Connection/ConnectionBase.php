@@ -43,7 +43,14 @@ class ConnectionBase implements IConnect{
 
     public function execute()
     {
-        $this->_prepared->execute($this->_params);
+        $return = $this->_prepared->execute($this->_params);
+        //echo $this->_prepared->rowCount();
+        //echo $this->_prepared->queryString;
+        if($return === false)
+        {
+            throw new PDOException( $this->_prepared->errorInfo()[2],$this->_prepared->errorInfo()[1] );
+
+        }
         return $this->_prepared;
     }
 
@@ -60,5 +67,10 @@ class ConnectionBase implements IConnect{
     public function getCatalog()
     {
         return $this->_database;
+    }
+
+    public function quote($str)
+    {
+        return $this->_db->quote($str);
     }
 }

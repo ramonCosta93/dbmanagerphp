@@ -12,14 +12,21 @@ $credentials->setPassword("");
 
 $con = new ConnectionBase($credentials);
 $context = new ContextBase($con);
+
 $testeEntity = $context->getEntity("teste");
-$testeEntity->id = 23123;
+$testeEntity->nome = "Teste Locao";
+
 
 $dao = new ContextDAOBase($con,$testeEntity);
 
-$dao->Add();
+$dao->Update(array('id' => 231), array('nome' => 'Teste Loco Demais'));
+$dao->Delete(array('id' => 231));
 
-var_dump($context->getEntity("teste")->getPropertysColumns());
+
+
+//$dao->Add();
+
+//var_dump($context->getEntity("teste")->getPropertysColumns());
 
 /*
 $con->prepare("INSERT INTO teste VALUES(:id, :nome)");
